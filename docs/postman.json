@@ -1,0 +1,204 @@
+{
+	"id": "aebc8503-86b2-4498-be95-5a773497f506",
+	"name": "Udaconnect",
+	"timestamp": "2021-10-27T19:27:58.835Z",
+	"collection_id": "14525698-877c018d-954f-474e-b1cd-bd516a9ad09f",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 6,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "3a782716-baa4-4ba2-96ce-171b2059e50a",
+			"name": "PersonsGet",
+			"url": "http://127.0.0.1:30002/api/persons",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7ac2414b-004c-468d-b81a-29d2a5c4f5a2",
+			"name": "PersonsGetId",
+			"url": "http://127.0.0.1:30002/api/persons/9",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "1373ade1-6316-4c6f-a93c-b59a3a444b42",
+			"name": "PersonsPost",
+			"url": "http://127.0.0.1:30002/api/persons",
+			"time": 32,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Successful POST request": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				32
+			],
+			"allTests": [
+				{
+					"Successful POST request": true
+				}
+			]
+		},
+		{
+			"id": "774fd362-e5e1-4dd1-b5a6-9ada852a2948",
+			"name": "LocationsGetId",
+			"url": "http://127.0.0.1:30003/api/locations/29",
+			"time": 139,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				139
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "a8afd3cb-9bf8-409b-934a-e37fd3c47af1",
+			"name": "LocationsPost",
+			"url": "http://127.0.0.1:30003/api/locations",
+			"time": 211,
+			"responseCode": {
+				"code": 202,
+				"name": "ACCEPTED"
+			},
+			"tests": {
+				"Successful POST request": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				211
+			],
+			"allTests": [
+				{
+					"Successful POST request": true
+				}
+			]
+		},
+		{
+			"id": "85fc1012-746a-4769-922c-c485509eaa88",
+			"name": "ConnectionsGet",
+			"url": "http://127.0.0.1:30004/api/persons/6/connection?start_date=2020-01-01&end_date=2020-12-30&distance=5",
+			"time": 124,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				124
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 541,
+	"collection": {
+		"requests": [
+			{
+				"id": "3a782716-baa4-4ba2-96ce-171b2059e50a",
+				"method": "GET"
+			},
+			{
+				"id": "7ac2414b-004c-468d-b81a-29d2a5c4f5a2",
+				"method": "GET"
+			},
+			{
+				"id": "1373ade1-6316-4c6f-a93c-b59a3a444b42",
+				"method": "POST"
+			},
+			{
+				"id": "774fd362-e5e1-4dd1-b5a6-9ada852a2948",
+				"method": "GET"
+			},
+			{
+				"id": "a8afd3cb-9bf8-409b-934a-e37fd3c47af1",
+				"method": "POST"
+			},
+			{
+				"id": "85fc1012-746a-4769-922c-c485509eaa88",
+				"method": "GET"
+			}
+		]
+	}
+}

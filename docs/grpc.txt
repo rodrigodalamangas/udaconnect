@@ -1,0 +1,14 @@
+The Persons gRPC endpoint consist in a service that queries all the Persons data from the database and the payload has the following format:
+
+message PersonMessage {
+  int64 id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string company_name = 4;
+}
+
+All fields are strings except id that is an integer.
+
+You can test the endpoint with the following command in the project folder:
+
+python app/getter.py

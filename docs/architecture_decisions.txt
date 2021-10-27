@@ -1,0 +1,10 @@
+# Architecture Design:
+
+To understand and make all the changes for this project I built two dependency graphs, the first one with the Previous architecture design (previous_architecture_design.png) and the last one with the new architecture (architecture_design.png).
+
+# Previous Application:
+
+According to the previous architecture design the application is composed of an api and a frontend app. The frontend connects to the api through the Persons Route and the Connections Route. The api had 3 routes (Locations, Persons and Connection) and each route had its own service and only the Connections Service depends on the Person Service. The Location Route would be used for an mobile app to collect locations data.
+
+# Current Application:
+
