@@ -44,4 +44,9 @@ spec:
             configMapKeyRef:
               name: db-env
               key: DB_PORT
+        - name: KAFKA_CONSUMER
+          valueFrom:
+            configMapKeyRef:
+              name: db-env
+              key: KAFKA_CONSUMER
       restartPolicy: Always

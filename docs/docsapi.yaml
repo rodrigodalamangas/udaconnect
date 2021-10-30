@@ -1,0 +1,240 @@
+---
+openapi: 3.0.0
+info:
+  title: UdaConnect Endpoint
+  description: Udacity UdaConnect Project API
+  version: 1.0.0
+
+servers:
+  - url: http://localhost
+    description: Internal staging server for testing
+
+paths:
+  /30002/api/persons:
+    get:
+      summary: Return a list of persons.
+      description: Retrieves all Persons stored in the database
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Persons'
+        "400":
+          description: Bad Request
+    post:
+      summary: Creates a person
+      description: Create a new person record in the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        "400":
+          description: Bad Request
+  /30002/api/person/{person_id}:
+    get:
+      summary: Gets a specific person by its ID
+      description: Retrieves all the details of a specific person ID
+      parameters:
+      - name: person_id
+        in: path
+        description: Unique ID for a given Person
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        "400":
+          description: Bad Request
+        "404":
+          description: The specified person ID was not found in the database  
+  /30004/api/persons/{person_id}/connection:
+    get:
+      summary: Gets the connections of a specific Person
+      description: Retrieves all connections for a specific Person
+      parameters:
+      - in: query
+        description: Proximity to a given user in meters
+        name: distance
+        required: True
+        schema:
+          type: string
+      - in: query
+        description: Upper bound of date range
+        name: endDate
+        required: True
+        schema:
+          type: string
+      - in: query
+        description: Lower bound of date range
+        name: startDate
+        required: True
+        schema:
+          type: string
+      - name: person_id
+        in: path
+        description: The Person's ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Connections'
+        "400":
+          description: Bad Resquest
+  /30003/api/locations/{location_id}:
+    get:
+      summary: Gets a specific location by its ID
+      description: Retrieves all the details of a specific location
+      parameters:
+      - name: location_id
+        in: path
+        description: Unique ID for a given Location
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationResponse'
+        "400":
+          description: Bad Resquest
+        "404":
+          description: The specified location ID was not found in the database
+  /30003/api/locations/:
+    post:
+      summary: Creates a Location
+      description: Create a new location record in the database
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+      responses:
+        "202":
+          description: Accepted
+        "400":
+          description: Bad Resquest
+components:
+  schemas:
+    Persons:
+      required:
+      - id
+      - first_name
+      - last_name
+      - company_name
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        first_name:
+          type: string
+          example: "Rodrigo"
+        last_name:
+          type: string
+          example: "Dalamangas"
+        company_name:
+          type: string
+          example: "Algoritmo"
+    Person:
+      required:
+      - first_name
+      - last_name
+      - company_name
+      type: object
+      properties:
+        first_name:
+          type: string
+          example: "Rodrigo"
+        last_name:
+          type: string
+          example: "Dalamangas"
+        company_name:
+          type: string
+          example: "Algoritmo"
+    Connections:
+      required:
+      - person
+      - location
+      type: object
+      properties:
+        person:
+          type: object
+          example:
+          - id: 10
+            first_name: "Rodrigo"
+            last_name: "Dalamangas"
+            company_name: "Algoritmo"
+        location:
+          type: object
+          example:
+          - id: 34
+            person_id: 6
+            longitude: "37.553441"
+            latitude: "-122.290524"
+            creation_time: "2020-07-07T10:37:06"
+    Location:
+      required:
+      - person_id
+      - longitude
+      - latitude
+      type: object
+      properties:
+        person_id:
+          type: integer
+          example: 9
+        longitude:
+          type: string
+          example: "37.553441"
+        latitude:
+          type: string
+          example: "-122.290524"
+    LocationResponse:
+      required:
+      - id
+      - person_id
+      - longitude
+      - latitude
+      - creation_time
+      type: object
+      properties:
+        id:
+          type: integer 
+          example: 29
+        person_id:
+          type: integer
+          example: 1
+        longitude:
+          type: string
+          example: "37.553441"
+        latitude:
+          type: string
+          example: "-122.290524"
+        creation_time:
+          type: string
+          example: "2020-08-18T10:37:06"

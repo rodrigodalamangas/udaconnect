@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, g
 from flask_cors import CORS
 from flask_restx import Api
@@ -27,9 +28,9 @@ def create_app(env=None):
     @app.before_request
     def before_request():
         # Set up a Kafka producer
-        KAFKA_SERVER = 'kafka-release-0.kafka-release-headless.default.svc.cluster.local:9092'
-        #KAFKA_SERVER = 'localhost:9092'
-        producer = KafkaProducer(bootstrap_servers=[KAFKA_SERVER])
+        KAFKA_PRODUCER = os.environ["KAFKA_PRODUCER"]
+        #KAFKA_PRODUCER = 'localhost:9092'
+        producer = KafkaProducer(bootstrap_servers=[KAFKA_PRODUCER])
         # Setting Kafka to g enables us to use this
         # in other parts of our application
         g.kafka_producer = producer

@@ -41,4 +41,15 @@ spec:
           limits:
             memory: "256Mi"
             cpu: "256m"
+        env:
+        - name: REACT_APP_PERSONS_URL
+          valueFrom:
+            configMapKeyRef:
+              name: db-env
+              key: REACT_APP_PERSONS_URL
+        - name: REACT_APP_CONNECTIONS_URL
+          valueFrom:
+            configMapKeyRef:
+              name: db-env
+              key: REACT_APP_CONNECTIONS_URL
       restartPolicy: Always

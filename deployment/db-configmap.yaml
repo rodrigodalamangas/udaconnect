@@ -5,5 +5,9 @@ data:
   DB_NAME: "geoconnections"
   DB_HOST: "postgres"
   DB_PORT: "5432"
+  KAFKA_CONSUMER: "kafka-release.default.svc.cluster.local:9092"
+  KAFKA_PRODUCER: "kafka-release-0.kafka-release-headless.default.svc.cluster.local:9092"
+  REACT_APP_PERSONS_URL: "http://localhost:30002/api/persons"
+  REACT_APP_CONNECTIONS_URL: "http://localhost:30004/api/persons/"
 metadata:
   name: db-env

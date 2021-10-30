@@ -12,10 +12,10 @@ DB_PORT = os.environ["DB_PORT"]
 DB_NAME = os.environ["DB_NAME"]
 
 TOPIC_NAME = 'locations'
-KAFKA_SERVER = 'kafka-release.default.svc.cluster.local:9092'
-#KAFKA_SERVER = 'localhost:9092'
+KAFKA_CONSUMER = os.environ["KAFKA_CONSUMER"]
+#KAFKA_CONSUMER = 'localhost:9092'
 
-consumer = KafkaConsumer(TOPIC_NAME, bootstrap_servers=[KAFKA_SERVER])
+consumer = KafkaConsumer(TOPIC_NAME, bootstrap_servers=[KAFKA_CONSUMER])
 
 
 def save_location(location: Dict):
@@ -35,9 +35,14 @@ def save_location(location: Dict):
         print('Insertion Error!')
 
 
-for message in consumer:
-    location_json = message.value.decode('utf-8')
-    print(location_json)
-    location_dict = json.loads(location_json)
-    save_location(location_dict)
-    print('saved')
+# Keep thread alive
+try:
+    while True:
+        for message in consumer:
+            location_json = message.value.decode('utf-8')
+            print(location_json)
+            location_dict = json.loads(location_json)
+            save_location(location_dict)
+            print('saved')
+except KeyboardInterrupt:
+    consumer.close(1)

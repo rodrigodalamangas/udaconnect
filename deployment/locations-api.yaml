@@ -60,4 +60,9 @@ spec:
             configMapKeyRef:
               name: db-env
               key: DB_PORT
+        - name: KAFKA_PRODUCER
+          valueFrom:
+            configMapKeyRef:
+              name: db-env
+              key: KAFKA_PRODUCER
       restartPolicy: Always
